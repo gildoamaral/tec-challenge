@@ -1,7 +1,7 @@
 import type { Request, Response } from 'express';
 import { HttpError } from '../middlewares/errorHandler';
-import { register, login } from '../services/authService';
-import { registerSchema, loginSchema } from '../schemas/authSchemas';
+import { register, login } from '../services/auth.service';
+import { registerSchema, loginSchema } from '../schemas/auth.schema';
 
 export async function registerHandler(req: Request, res: Response) {
   const { email, password } = registerSchema.parse(req.body);

@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 import { env } from '../config/env';
 import { HttpError } from '../middlewares/errorHandler';
 import { UserModel } from '../models/User';
-import { LoginInput, RegisterInput } from '../schemas/authSchemas';
+import { LoginInput, RegisterInput } from '../schemas/auth.schema';
 
 function signToken(payload: { sub: string; email: string }) {
   return jwt.sign(payload, env.JWT_SECRET, { expiresIn: env.JWT_EXPIRES_IN });
