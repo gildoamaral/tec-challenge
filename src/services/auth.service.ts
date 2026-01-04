@@ -11,12 +11,10 @@ function signToken(payload: { sub: string; email: string }) {
 
 export async function register({ email, password}: RegisterInput) {
   const existingUser = await UserModel.findOne({ email }).lean();
-  if (existingUser) throw new HttpError(409, 'Email already in use');
+  if (existingUser) throw new HttpError(409, 'Email já está em uso');
 
   const passwordHash = await bcrypt.hash(password, 10);
-  const user = await UserModel.create({ email, password: passwordHash });
-  
-  return signToken({ sub: String(user._id), email: user.email });
+  await UserModel.create({ email, password: passwordHash });
 }
 
 export async function login({ email, password }: LoginInput) {

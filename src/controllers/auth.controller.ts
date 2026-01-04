@@ -6,9 +6,9 @@ import { registerSchema, loginSchema } from '../schemas/auth.schema';
 export async function registerHandler(req: Request, res: Response) {
   const { email, password } = registerSchema.parse(req.body);
 
-  const token = await register({ email, password });
+  await register({ email, password });
 
-  return res.status(201).json({ token });
+  return res.status(201).json({ message: 'Usuário criado com sucesso' });
 }
 
 export async function loginHandler(req: Request, res: Response) {
