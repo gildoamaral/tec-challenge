@@ -12,7 +12,7 @@ export class HttpError extends Error {
 
 export function errorHandler(err: unknown, _req: Request, res: Response, _next: NextFunction) {
   if (err instanceof ZodError) {
-    return res.status(400).json({ message: 'Validation error', issues: err.issues });
+    return res.status(400).json({ message: 'Validation error', issues: err.issues.map(issue => issue.message) });
   }
 
   if (err instanceof HttpError) {

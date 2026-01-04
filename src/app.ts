@@ -1,6 +1,8 @@
+import 'express-async-errors';
 import express from "express";
 import { errorHandler } from "./middlewares/errorHandler";
-import { authRouter } from './routes/auth.route';
+import { authRouter } from './routes/auth.routes';
+import { orderRouter } from './routes/order.routes';
 
 export function createApp() {
   const app = express();
@@ -9,6 +11,7 @@ export function createApp() {
   app.get('/health', (_req, res) => res.json({ ok: true }));
 
   app.use("/auth", authRouter);
+  app.use("/orders", orderRouter);
 
   app.use(errorHandler);
 
