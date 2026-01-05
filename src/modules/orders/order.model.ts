@@ -1,37 +1,11 @@
 import { Schema, model } from 'mongoose';
-
-export enum OrderState {
-  CREATED = 'CREATED',
-  ANALYSIS = 'ANALYSIS',
-  COMPLETED = 'COMPLETED'
-}
-
-export enum OrderStatus {
-  ACTIVE = 'ACTIVE',
-  DELETED = 'DELETED'
-}
-
-export enum ServiceStatus {
-  PENDING = 'PENDING',
-  DONE = 'DONE'
-}
-
-export type OrderService = {
-  name: string;
-  value: number;
-  status: ServiceStatus;
-};
-
-export type OrderDocument = {
-  lab: string;
-  patient: string;
-  customer: string;
-  state: OrderState;
-  status: OrderStatus;
-  services: OrderService[];
-  createdAt?: Date;
-  updatedAt?: Date;
-};
+import {
+  OrderState,
+  OrderStatus,
+  ServiceStatus,
+  OrderService,
+  OrderDocument
+} from './order.types';
 
 const orderServiceSchema = new Schema<OrderService>(
   {
@@ -79,13 +53,7 @@ const orderSchema = new Schema<OrderDocument>(
     },
     services: {
       type: [orderServiceSchema],
-      required: true,
-      validate: {
-        validator: function(v: OrderService[]) {
-          return Array.isArray(v) && v.length > 0;
-        },
-        message: 'Pedido deve ter ao menos um serviço'
-      }
+      required: true
     }
   },
   { timestamps: true }

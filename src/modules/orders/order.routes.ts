@@ -1,10 +1,10 @@
 import { Router } from 'express';
-import { authMiddleware } from '../middlewares/auth.middleware';
+import { authMiddleware } from '../../middlewares/auth.middleware';
 import { 
   createOrderHandler, 
   listOrdersHandler,
   advanceOrderHandler 
-} from '../controllers/order.controller';
+} from './order.controller';
 
 export const orderRouter = Router();
 

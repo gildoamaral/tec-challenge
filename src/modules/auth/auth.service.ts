@@ -1,13 +1,13 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import { env } from '../config/env';
-import { HttpError } from '../middlewares/errorHandler';
-import { UserModel } from '../models/User';
-import { LoginInput, RegisterInput } from '../schemas/auth.schema';
+import { env } from '../../config/env';
+import { HttpError } from '../../middlewares/errorHandler';
+import { UserModel } from '../user/user.model'; 
+import { LoginInput, RegisterInput } from './auth.schema';
 
 function signToken(payload: { sub: string; email: string }) {
   return jwt.sign(payload, env.JWT_SECRET, { expiresIn: env.JWT_EXPIRES_IN });
-}
+} 
 
 export async function register({ email, password}: RegisterInput) {
   const existingUser = await UserModel.findOne({ email }).lean();

@@ -1,8 +1,8 @@
 import type { Response } from 'express';
-import type { AuthRequest } from '../middlewares/auth.middleware';
-import { createOrderSchema, listOrdersSchema, orderParamsSchema } from '../schemas/order.schema';
-import { createOrder, listOrders, advanceOrderState } from '../services/order.service';
-import { HttpError } from '../middlewares/errorHandler';
+import type { AuthRequest } from '../../middlewares/auth.middleware';
+import { createOrderSchema, listOrdersSchema, orderParamsSchema } from './order.schema';
+import { createOrder, listOrders, advanceOrderState } from './order.service';
+import { HttpError } from '../../middlewares/errorHandler';
 
 export async function createOrderHandler(req: AuthRequest, res: Response) {
   const data = createOrderSchema.parse(req.body);

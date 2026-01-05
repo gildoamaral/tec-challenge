@@ -2,8 +2,8 @@ import 'express-async-errors';
 import express from "express";
 import swaggerUi from 'swagger-ui-express';
 import { errorHandler } from "./middlewares/errorHandler";
-import { authRouter } from './routes/auth.routes';
-import { orderRouter } from './routes/order.routes';
+import { authRouter } from './modules/auth/auth.routes'; 
+import { orderRouter } from './modules/orders/order.routes'; 
 import { swaggerSpec } from './config/swagger';
 
 export function createApp() {

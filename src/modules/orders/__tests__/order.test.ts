@@ -1,10 +1,11 @@
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { OrderModel, OrderState, OrderStatus, ServiceStatus } from '../src/models/Order';
-import { advanceOrderState } from '../src/services/order.service';
+import { OrderModel } from '../order.model';
+import { OrderState, OrderStatus } from '../order.types';
+import { advanceOrderState } from '../order.service';
 import { makeMockOrder } from './factories/order.factory';
 
-vi.mock('../src/models/Order', async (importOriginal) => {
-  const actual = await importOriginal<typeof import('../src/models/Order')>();
+vi.mock('../order.model', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('../order.model')>();
   return {
     ...actual,
     OrderModel: {

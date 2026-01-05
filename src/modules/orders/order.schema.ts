@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { OrderState, ServiceStatus } from "../models/Order";
+import { OrderState, ServiceStatus } from "./order.types";
 import { isValidObjectId } from "mongoose";
 
 export const serviceSchema = z.object({

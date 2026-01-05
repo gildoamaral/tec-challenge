@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { registerHandler, loginHandler } from '../controllers/auth.controller';
+import { registerHandler, loginHandler } from './auth.controller';
 
 export const authRouter = Router();
 

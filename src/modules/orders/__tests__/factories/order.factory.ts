@@ -1,5 +1,5 @@
 import { vi } from 'vitest';
-import { OrderState, OrderStatus, ServiceStatus } from '../../src/models/Order';
+import { OrderState, OrderStatus, ServiceStatus } from '../../order.types';
 
 export const makeMockOrder = (overrides = {}) => ({
   _id: '1234567891011121314',

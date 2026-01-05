@@ -1,11 +1,7 @@
-import {
-  OrderDocument,
-  OrderModel,
-  OrderState,
-  OrderStatus,
-} from "../models/Order";
-import { HttpError } from "../middlewares/errorHandler";
-import { CreateOrderInput, ListOrdersInput } from "../schemas/order.schema";
+import { OrderModel } from "./order.model";
+import { OrderDocument, OrderState, OrderStatus } from "./order.types";
+import { HttpError } from "../../middlewares/errorHandler";
+import { CreateOrderInput, ListOrdersInput } from "./order.schema";
 import { FilterQuery } from "mongoose";
 
 const STATE_TRANSITIONS: Record<OrderState, OrderState | null> = {
